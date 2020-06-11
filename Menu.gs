@@ -20,9 +20,12 @@ class Menu {
         );
         payload.page = 0;
 
+        // const payload = Object.fromEntries(new URLSearchParams(formData));
+        const allLinks = [];
         let links = [];
-        let row = 1;
+        let allLinksLength;
         do {
+            allLinksLength = allLinks.length;
             let options = {
                 'method': 'post',
                 'payload': payload,
@@ -36,11 +39,38 @@ class Menu {
                 .map((i, el) => $(el).attr('href'))
                 .toArray();
 
-            links.forEach(
-                link => sheet.getRange(row++, 1).setValue(link)
-            );
+            links
+                .filter(link => !allLinks.includes(link))
+                .forEach(link => allLinks.push(link));
 
             payload.page++;
-        } while (links.length !== 0)
+        } while (allLinksLength !== allLinks.length)
+
+        // console.info('Links', links);
+
+//const links =  [ 'https://www.telderi.ru/ru/viewsite/1749150',
+//  'https://www.telderi.ru/ru/viewsite/1841101',
+//  'https://www.telderi.ru/ru/viewsite/1753723',
+//  'https://www.telderi.ru/ru/viewsite/1819864',
+//  'https://www.telderi.ru/ru/viewsite/1858547',
+//  'https://www.telderi.ru/ru/viewsite/1842051',
+//  'https://www.telderi.ru/ru/viewsite/1852298',
+//  'https://www.telderi.ru/ru/viewsite/1870220',
+//  'https://www.telderi.ru/ru/viewsite/1668372',
+//  'https://www.telderi.ru/ru/viewsite/1530834',
+//  'https://www.telderi.ru/ru/viewsite/1306043',
+//  'https://www.telderi.ru/ru/viewsite/1871624',
+//  'https://www.telderi.ru/ru/viewsite/1872246',
+//  'https://www.telderi.ru/ru/viewsite/1828715',
+//  'https://www.telderi.ru/ru/viewsite/1865879',
+//  'https://www.telderi.ru/ru/viewsite/1756525',
+//  'https://www.telderi.ru/ru/viewsite/1859085',
+//  'https://www.telderi.ru/ru/viewsite/1665029',
+//  'https://www.telderi.ru/ru/viewsite/1759417',
+//  'https://www.telderi.ru/ru/viewsite/1809262' ];
+
+        for (const [key, link] of Object.entries(allLinks)) {
+            sheet.getRange(parseInt(key) + 1, 1).setValue(link);
+        }
     }
 }
