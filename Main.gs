@@ -4,6 +4,6 @@
 function onOpen() {
     SpreadsheetApp.getUi()
         .createMenu('Telderi')
-        .addItem('Parse a lots', 'Menu.parseLots')
+        .addItem('Parse a lots', 'Menu.parseLotsPrompt')
         .addToUi();
 }
