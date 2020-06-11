@@ -6,7 +6,7 @@
  * @customfunction
  */
 function Telderi_pagesInYandex(url) {
-  return Utils.extractInt(url, '#auction_index_ya');
+    return Utils.extractInt(url, '#auction_index_ya');
 }
 
 
@@ -18,7 +18,7 @@ function Telderi_pagesInYandex(url) {
  * @customfunction
  */
 function Telderi_pagesInGoogle(url) {
-  return Utils.extractInt(url, '#auction_index_google');
+    return Utils.extractInt(url, '#auction_index_google');
 }
 
 
@@ -32,5 +32,5 @@ function Telderi_pagesInGoogle(url) {
  * @customfunction
  */
 function Telderi_siteQualityIndex(url) {
-  return Utils.extractInt(url, '#auction_sqi');
+    return Utils.extractInt(url, '#auction_sqi');
 }

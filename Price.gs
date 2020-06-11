@@ -6,7 +6,7 @@
  * @customfunction
  */
 function Telderi_currentPrice(url) {
-  return Utils.extractInt(url, '#now_price');
+    return Utils.extractInt(url, '#now_price');
 }
 
 /**
@@ -17,7 +17,7 @@ function Telderi_currentPrice(url) {
  * @customfunction
  */
 function Telderi_optimalPrice(url) {
-  return Utils.extractInt(url, '#start_price span.price_padd');
+    return Utils.extractInt(url, '#start_price span.price_padd');
 }
 
 /**
@@ -28,5 +28,5 @@ function Telderi_optimalPrice(url) {
  * @customfunction
  */
 function Telderi_blitzPrice(url) {
-  return Utils.extractInt(url, '#blitz_price span.price_padd');
+    return Utils.extractInt(url, '#blitz_price span.price_padd');
 }

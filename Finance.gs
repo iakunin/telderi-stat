@@ -6,6 +6,6 @@
  * @customfunction
  */
 function Telderi_grossRevenue(url) {
-  const $ = Cheerio.load(Utils.html(url));
-  return Utils.intFromSelector($('#gross_revenue > span').last());
+    const $ = Cheerio.load(Utils.html(url));
+    return Utils.intFromSelector($('#gross_revenue > span').last());
 }

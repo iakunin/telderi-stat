@@ -6,17 +6,17 @@
  * @customfunction
  */
 function Telderi_websiteUrl(url) {
-  const PHPSESSID = PropertiesService.getScriptProperties().getProperty('PHPSESSID');
-  const html = UrlFetchApp.fetch(
-      url,
-      {
-        'headers': {
-          'cookie': `PHPSESSID=${PHPSESSID};`
+    const PHPSESSID = PropertiesService.getScriptProperties().getProperty('PHPSESSID');
+    const html = UrlFetchApp.fetch(
+        url,
+        {
+            'headers': {
+                'cookie': `PHPSESSID=${PHPSESSID};`
+            }
         }
-      }
-  ).getContentText();
+    ).getContentText();
 
-  const $ = Cheerio.load(html);
+    const $ = Cheerio.load(html);
 
-  return $('#domen_url > a').first().attr('href');
+    return $('#domen_url > a').first().attr('href');
 }

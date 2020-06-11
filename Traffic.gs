@@ -6,7 +6,7 @@
  * @customfunction
  */
 function Telderi_dailyVisitors(url) {
-  return Utils.extractInt(url, '#visits_month');
+    return Utils.extractInt(url, '#visits_month');
 }
 
 
@@ -18,7 +18,7 @@ function Telderi_dailyVisitors(url) {
  * @customfunction
  */
 function Telderi_dailyViews(url) {
-  return Utils.extractInt(url, '#views_month');
+    return Utils.extractInt(url, '#views_month');
 }
 
 
@@ -30,9 +30,9 @@ function Telderi_dailyViews(url) {
  * @customfunction
  */
 function Telderi_trafficFromYandex_percents(url) {
-  return Traffic.percents(url, 'яндекс') +
-    Traffic.percents(url, 'yandex') +
-    Traffic.percents(url, 'yandex.ru');
+    return Traffic.percents(url, 'яндекс') +
+        Traffic.percents(url, 'yandex') +
+        Traffic.percents(url, 'yandex.ru');
 }
 
 /**
@@ -43,21 +43,21 @@ function Telderi_trafficFromYandex_percents(url) {
  * @customfunction
  */
 function Telderi_trafficFromGoogle_percents(url) {
-  return Traffic.percents(url, 'google');
+    return Traffic.percents(url, 'google');
 }
 
 class Traffic {
-  /**
-   * @param {string} url - Url of lot on Telderi.
-   * @param {string} source - Type of traffic source.
-   * @returns {number} Extracted percents (from 0 to 100).
-   */
-  static percents(url, source) {
-    const $ = Cheerio.load(Utils.html(url));
-    const selector = "#seo_block [title='" + source + "']";
+    /**
+     * @param {string} url - Url of lot on Telderi.
+     * @param {string} source - Type of traffic source.
+     * @returns {number} Extracted percents (from 0 to 100).
+     */
+    static percents(url, source) {
+        const $ = Cheerio.load(Utils.html(url));
+        const selector = "#seo_block [title='" + source + "']";
 
-    return parseInt(
-      $(selector).parent().children('.data-part').text().trim().split('/')[0]
-    ) || 0;
-  }
+        return parseInt(
+            $(selector).parent().children('.data-part').text().trim().split('/')[0]
+        ) || 0;
+    }
 }
