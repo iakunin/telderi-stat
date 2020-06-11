@@ -21,6 +21,7 @@ class Menu {
 
         // const payload = Object.fromEntries(new URLSearchParams(formData));
         const allLinks = [];
+        let links = [];
         do {
             payload.page = 0;
             let options = {
@@ -32,7 +33,7 @@ class Menu {
             };
             let html = UrlFetchApp.fetch('https://www.telderi.ru/ru/search', options).getContentText();
             let $ = Cheerio.load(html);
-            let links = $('.auction_table_title > a')
+            links = $('.auction_table_title > a')
                 .map((i, el) => $(el).attr('href'))
                 .toArray();
 
