@@ -32,11 +32,11 @@ class Menu {
             };
             let html = UrlFetchApp.fetch('https://www.telderi.ru/ru/search', options).getContentText();
             let $ = Cheerio.load(html);
-
-            $('.auction_table_title > a')
+            let links = $('.auction_table_title > a')
                 .map((i, el) => $(el).attr('href'))
-                .toArray()
-                .forEach(i => allLinks.push(i));
+                .toArray();
+
+            links.forEach(i => allLinks.push(i));
 
             payload.page++;
         } while (links.length !== 0)
