@@ -1,8 +1,8 @@
 /**
  * [Telderi] Get `gross revenue`.
  *
- * @param {"https://www.telderi.ru/ru/viewsite/1763121"} url Url of Telderi site.
- * @return Gross revenue
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Gross revenue.
  * @customfunction
  */
 function Telderi_grossRevenue(url) {

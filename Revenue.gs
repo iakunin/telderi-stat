@@ -1,32 +1,35 @@
 /**
  * [Telderi] Get `revenue from context ad` in percents.
  *
- * @param {"https://www.telderi.ru/ru/viewsite/1763121"} url Url of Telderi site.
- * @return Revenue from context ad in percents.
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Revenue from context ad in percents (from 0 to 100).
  * @customfunction
  */
 function Telderi_revenueFromContext_percents(url) {
-  return Revenue.calculate(url, 'Контекстная реклама');
+  return Revenue.percents(url, 'Контекстная реклама');
 }
 
 /**
  * [Telderi] Get `revenue from CPA` in percents.
  *
- * @param {"https://www.telderi.ru/ru/viewsite/1763121"} url Url of Telderi site.
- * @return Revenue from CPA in percents.
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Revenue from CPA in percents (from 0 to 100).
  * @customfunction
  */
 function Telderi_revenueFromCpa_percents(url) {
-  return Revenue.calculate(url, 'CPA (партнерские программы)');
+  return Revenue.percents(url, 'CPA (партнерские программы)');
 }
 
-
-// some kind of private method
 class Revenue {
-  static calculate(url, type) {
+  /**
+   * @param {string} url - Url of lot on Telderi.
+   * @param {string} type - Type of revenue source.
+   * @returns {number} Extracted percents (from 0 to 100).
+   */
+  static percents(url, type) {
     const $ = Cheerio.load(Utils.html(url));
     const selector = "div:contains('" + type + "')";
-    
+
     return $('#revenue')
     .parent()
     .find(selector)

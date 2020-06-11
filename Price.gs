@@ -1,32 +1,32 @@
 /**
  * [Telderi] Get `current price` in RUB.
  *
- * @param {"https://www.telderi.ru/ru/viewsite/1763121"} url Url of Telderi site.
- * @return Current price
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Current lot price.
  * @customfunction
  */
 function Telderi_currentPrice(url) {
-  return Utils.extractInt(Utils.html(url), '#now_price');
+  return Utils.extractInt(url, '#now_price');
 }
 
 /**
  * [Telderi] Get `optimal price` in RUB.
  *
- * @param {"https://www.telderi.ru/ru/viewsite/1763121"} url Url of Telderi site.
- * @return Optimal price
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Optimal lot price.
  * @customfunction
  */
 function Telderi_optimalPrice(url) {
-  return Utils.extractInt(Utils.html(url), '#start_price span.price_padd');
+  return Utils.extractInt(url, '#start_price span.price_padd');
 }
 
 /**
  * [Telderi] Get `blitz price` in RUB.
  *
- * @param {"https://www.telderi.ru/ru/viewsite/1763121"} url Url of Telderi site.
- * @return Blitz price
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Blitz lot price.
  * @customfunction
  */
 function Telderi_blitzPrice(url) {
-  return Utils.extractInt(Utils.html(url), '#blitz_price span.price_padd');
+  return Utils.extractInt(url, '#blitz_price span.price_padd');
 }
