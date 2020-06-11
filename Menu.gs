@@ -21,6 +21,7 @@ class Menu {
         const links = $('.auction_table_title > a')
             .map((i, el) => $(el).attr('href'))
             .toArray();
+        console.info('Links', links);
 
         for (const [key, value] of Object.entries(links)) {
             sheet.getRange(key + 1, 1).setValue(value);
