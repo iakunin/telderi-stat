@@ -6,7 +6,7 @@
  * @customfunction
  */
 function Telderi_revenueFromContext_percents(url) {
-  return revenue(url, 'Контекстная реклама');
+  return Revenue.calculate(url, 'Контекстная реклама');
 }
 
 /**
@@ -17,16 +17,17 @@ function Telderi_revenueFromContext_percents(url) {
  * @customfunction
  */
 function Telderi_revenueFromCpa_percents(url) {
-  return revenue(url, 'CPA (партнерские программы)');
+  return Revenue.calculate(url, 'CPA (партнерские программы)');
 }
 
 
-
-function revenue(url, type) {
-  const $ = Cheerio.load(html(url));
-  const selector = "div:contains('" + type + "')";
-
-  return $('#revenue')
+// some kind of private method
+class Revenue {
+  static calculate(url, type) {
+    const $ = Cheerio.load(Utils.html(url));
+    const selector = "div:contains('" + type + "')";
+    
+    return $('#revenue')
     .parent()
     .find(selector)
     .last()
@@ -37,4 +38,5 @@ function revenue(url, type) {
     .map(i => i.trim().split('/')[1].trim())
     .map(i => parseInt(i) || 0)
     .reduce((a,b) => a + b, 0);
+  }
 }

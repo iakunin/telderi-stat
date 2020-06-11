@@ -6,9 +6,9 @@
  * @customfunction
  */
 function Telderi_trafficFromYandex_percents(url) {
-  return extractTrafficPercents(html(url), 'яндекс') + 
-    extractTrafficPercents(html(url), 'yandex') + 
-    extractTrafficPercents(html(url), 'yandex.ru');
+  return Traffic.percents(Utils.html(url), 'яндекс') + 
+    Traffic.percents(Utils.html(url), 'yandex') + 
+    Traffic.percents(Utils.html(url), 'yandex.ru');
 }
 
 /**
@@ -19,15 +19,16 @@ function Telderi_trafficFromYandex_percents(url) {
  * @customfunction
  */
 function Telderi_trafficFromGoogle_percents(url) {
-  return extractTrafficPercents(html(url), 'google');
+  return Traffic.percents(Utils.html(url), 'google');
 }
 
-
-function extractTrafficPercents(html, sourceName) {
-  const $ = Cheerio.load(html);
-  const selector = "#seo_block [title='" + sourceName + "']";
-  
-  return parseInt(
-    $(selector).parent().children('.data-part').text().trim().split('/')[0]
-  ) || 0;
+class Traffic {
+  static percents(html, sourceName) {
+    const $ = Cheerio.load(html);
+    const selector = "#seo_block [title='" + sourceName + "']";
+    
+    return parseInt(
+      $(selector).parent().children('.data-part').text().trim().split('/')[0]
+    ) || 0;
+  }
 }
