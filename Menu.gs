@@ -18,12 +18,12 @@ class Menu {
                 .replace(/&/g, '","')
                 .replace(/=/g,'":"') + '"}'
         );
+        payload.page = 0;
 
         // const payload = Object.fromEntries(new URLSearchParams(formData));
         const allLinks = [];
         let links = [];
         do {
-            payload.page = 0;
             let options = {
                 'method': 'post',
                 'payload': payload,
