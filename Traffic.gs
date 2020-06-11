@@ -1,4 +1,28 @@
 /**
+ * [Telderi] Get `daily visitors` attribute.
+ *
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Daily visitors.
+ * @customfunction
+ */
+function Telderi_dailyVisitors(url) {
+  return Utils.extractInt(url, '#visits_month');
+}
+
+
+/**
+ * [Telderi] Get `daily views` attribute.
+ *
+ * @param {string} url - Url of lot on Telderi.
+ * @return {number} Daily views.
+ * @customfunction
+ */
+function Telderi_dailyViews(url) {
+  return Utils.extractInt(url, '#views_month');
+}
+
+
+/**
  * [Telderi] Get `traffic from Yandex` in percents.
  *
  * @param {string} url - Url of lot on Telderi.
