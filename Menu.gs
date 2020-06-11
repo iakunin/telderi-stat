@@ -40,7 +40,7 @@ class Menu {
 
         for (let row = 1; row <= 5; row++) {
             // .getCell(1, 1)
-            sheet.getRange(1, row).setValue(row * 101);
+            sheet.getRange(row, 1).setValue(row * 101);
         }
 
         // for (var i = 0; i < numRows; ++i) {
