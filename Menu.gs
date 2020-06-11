@@ -65,8 +65,8 @@ class Menu {
 //  'https://www.telderi.ru/ru/viewsite/1759417',
 //  'https://www.telderi.ru/ru/viewsite/1809262' ];
 
-        for (const [key, value] of Object.entries(allLinks)) {
-            sheet.getRange(parseInt(key) + 1, 1).setValue(value);
+        for (const [key, link] of Object.entries(allLinks)) {
+            sheet.getRange(parseInt(key) + 1, 1).setValue(link);
         }
     }
 }
