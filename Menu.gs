@@ -38,7 +38,7 @@ class Menu {
         // }
 
 
-        for (let row = 0; row < 5; row++) {
+        for (let row = 1; row <= 5; row++) {
             // .getCell(1, 1)
             sheet.getRange(1, row).setValue(row * 101);
         }
