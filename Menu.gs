@@ -6,9 +6,10 @@ class Menu {
         const ui = SpreadsheetApp.getUi();
 
         const result = ui.prompt(
-            'Let\'s get to know each other!',
-            'Please enter your name:',
-            ui.ButtonSet.OK_CANCEL);
+            'Paste Telderi search URL here:'
+            // 'Please enter your name:',
+            // ui.ButtonSet.OK_CANCEL
+        );
 
         const text = result.getResponseText();
         if (result.getSelectedButton() === ui.Button.OK) {
